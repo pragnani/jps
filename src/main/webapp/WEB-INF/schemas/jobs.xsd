@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.javaspringtutorial.com/ws/jobs" xmlns:tns="http://www.javaspringtutorial.com/ws/jobs">
+
+	<xs:element name="getAllJobsRequest" />
+		
+
+	<xs:element name="getAllJobsResponse">
+		<xs:complexType>
+			<xs:sequence >
+				<xs:element name="job" type="tns:job" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getAllEmployeesRequest" />
+	<xs:element name="getAllEmployeeResponse" />
+
+	<xs:element name="getAllEmployersRequest" />
+	<xs:element name="getAllEmployerResponse" type="tns:employer" />
+
+	<xs:element name="getAllOccupationsRequest" />
+	<xs:element name="getAllOccupationsResponse" type="tns:occupation" />
+
+	<xs:complexType name="employee">
+		<xs:sequence>
+			<xs:element name="id" type="xs:integer" />
+			<xs:element name="email" type="xs:string" />
+			<xs:element name="firstName" type="xs:string" />
+			<xs:element name="lastName" type="xs:string" />
+			<xs:element name="userId" type="xs:string" />
+			<xs:element name="password" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="employer">
+		<xs:sequence>
+			<xs:element name="id" type="xs:integer" />
+			<xs:element name="email" type="xs:string" />
+			<xs:element name="firstName" type="xs:string" />
+			<xs:element name="lastName" type="xs:string" />
+			<xs:element name="userId" type="xs:string" />
+			<xs:element name="password" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="job">
+		<xs:sequence>
+			<xs:element name="id" type="xs:integer" />
+			<xs:element name="jobDescription" type="xs:string" />
+			<xs:element name="jobTitle" type="xs:string" />
+			<xs:element name="postedBy" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="occupation">
+		<xs:sequence>
+			<xs:element name="id" type="xs:integer" />
+			<xs:element name="name" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="address">
+		<xs:sequence>
+			<xs:element name="lane1" type="xs:string" />
+			<xs:element name="lane2" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

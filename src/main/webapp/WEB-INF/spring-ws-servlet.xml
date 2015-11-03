@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://www.springframework.org/schema/web-services"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="com.pbsi.training.endpoints" />
+	<ws:dynamic-wsdl id="jobportal" portTypeName="Jobs"
+		locationUri="/services/jobs">
+		<ws:xsd location="/WEB-INF/schemas/jobs.xsd" />
+	</ws:dynamic-wsdl>
+	<ws:annotation-driven />
+
+	<oxm:jaxb2-marshaller id="marshellar"
+		context-path="com.pbsi.training.generated" />
+
+	<bean id="jaxb1Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="packagesToScan"
+			value="com.pbsi.training.generated" />
+	</bean>
+
+</beans>
